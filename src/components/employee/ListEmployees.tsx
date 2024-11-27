@@ -31,6 +31,7 @@ export function ListEmployees() {
             <TableHeader>Papel</TableHeader>
             <TableHeader>Adicionado em:</TableHeader>
             <TableHeader>Atualizado em:</TableHeader>
+            <TableHeader>Actions</TableHeader>
           </TableRow>
         </thead>
         <tbody>
@@ -42,6 +43,7 @@ export function ListEmployees() {
             <TableCell>{employee.role}</TableCell>
             <TableCell>{employee.addedAt}</TableCell>
             <TableCell>{employee.updatedAt}</TableCell>
+            <TableCell>In progress</TableCell>
           </TableRow>
         ))}
         </tbody>
