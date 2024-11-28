@@ -13,35 +13,46 @@ export const ListEmployeesBackground = styled.div`
   height: 80%;
   border-radius: 5px;
   box-shadow: 0 4px 8px var(--shadow-color);
-  overflow-y: scroll;
+  overflow-y: auto; /* Para permitir o scroll interno */
 `;
+
 export const Table = styled.table`
   width: 100%;
   border-collapse: collapse;
-  font-size: 16px;
   text-align: center;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 `;
 
 export const TableRow = styled.tr`
   &:nth-child(even) {
-    background-color: #d0d0d0;
+    background-color: var(--primary);
   }
 `;
 
 export const TableHeader = styled.th`
-  padding: 12px 15px;
+  position: sticky;
+  top: 0;
+  background-color: var(--primary);
   color: black;
-  border: 1px solid gray;
-  background-color: #d0d0d0;
+  z-index: 10;
+  padding: 10px;
 `;
 
 export const TableCell = styled.td`
-  padding: 8px;
-  word-wrap: break-word;
-  white-space: normal;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  padding: 10px;
+`;
+
+export const GoToCreateEmployee = styled.button`
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: var(--primary);
+  color: black;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
 `;

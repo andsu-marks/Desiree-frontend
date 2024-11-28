@@ -15,6 +15,7 @@ const GlobalStyles = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     
+    --primary: #d0d0d0;
     --shadow-color: darkslategray;
   }
 
