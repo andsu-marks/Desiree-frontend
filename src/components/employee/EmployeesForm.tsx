@@ -1,7 +1,8 @@
+import toast from "react-hot-toast";
 import { useRedirect } from "../../hooks/useRedirect";
 import { ButtonsContainer, EmployeesFormBackground, Input, InputContainer, Label, Select, SubmitButton } from "../../styles/EmployeeForm.styles";
 import { useFormData } from "../../hooks/useFormData";
-import { formDataProps, Role } from "../../types/formDataProps";
+import { formDataProps, Role } from "../../types/EmployeeTypes";
 
 export function EmployeesForm() {
   const { goBackPage } = useRedirect();
@@ -25,6 +26,17 @@ export function EmployeesForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (formData.email !== formData.confirmEmail) {
+      toast.error("Os e-mails não coincidem!");
+      return;
+    }
+  
+    if (formData.password !== formData.confirmPassword) {
+      toast.error("As senhas não coincidem!");
+      return;
+    }
+
     console.log(formData);
   };
 

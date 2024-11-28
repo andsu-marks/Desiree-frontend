@@ -13,7 +13,8 @@ export const ListEmployeesBackground = styled.div`
   height: 80%;
   border-radius: 5px;
   box-shadow: 0 4px 8px var(--shadow-color);
-  overflow-y: auto; /* Para permitir o scroll interno */
+  margin: 40px;
+  overflow-y: auto;
 `;
 
 export const Table = styled.table`
