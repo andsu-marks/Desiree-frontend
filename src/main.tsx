@@ -15,7 +15,7 @@ createRoot(document.getElementById('root')!).render(
     <Routes>
       <Route path='/' element={<ListEmployees/>} />
       <Route path='/newemployee' element={<NewEmployeePage/>} />
-      <Route path='/editemployee/{:id}' element={<EditEmployeePage/>} />
+      <Route path='/editemployee/:id' element={<EditEmployeePage/>} />
     </Routes>
   </Router>
 )

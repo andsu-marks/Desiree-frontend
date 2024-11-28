@@ -1,11 +1,17 @@
+'use-client';
+
 import toast from "react-hot-toast";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 import { useRedirect } from "../../hooks/useRedirect";
 import { ButtonsContainer, EmployeesFormBackground, Input, InputContainer, Label, Select, SubmitButton } from "../../styles/EmployeeForm.styles";
 import { useFormData } from "../../hooks/useFormData";
 import { formDataProps, Role } from "../../types/EmployeeTypes";
+import { employeesFake } from "../../database";
 
 export function EmployeesForm() {
   const { goBackPage } = useRedirect();
+  const { id } = useParams();
 
   const { formData, setFormData } = useFormData<formDataProps>({
     name: '',
@@ -15,6 +21,22 @@ export function EmployeesForm() {
     password: '',
     confirmPassword: '',
   });
+
+  useEffect(() => {
+    if(id) {
+      const employee = employeesFake.find((emp) => emp.id);
+      if(employee) {
+        setFormData({
+          name: employee.name,
+          role: employee.role,
+          email: employee.email,
+          confirmEmail: employee.email,
+          password: employee.password,
+          confirmPassword: employee.password,
+        });
+      }
+    }
+  }, [id])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { id, value } = e.target;

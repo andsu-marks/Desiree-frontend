@@ -57,3 +57,8 @@ export const GoToCreateEmployee = styled.button`
   justify-content: center;
   z-index: 10;
 `;
+
+export const GoToEditEmployee = styled.button`
+  background-color: inherit;
+  border: gray;
+`;

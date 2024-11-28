@@ -1,26 +1,10 @@
 import { TiUserAdd } from "react-icons/ti";
-import { GoToCreateEmployee, ListEmployeesBackground, Table, TableCell, TableHeader, TableRow } from "../../styles/ListEmployee.styles";
+import { GoToCreateEmployee, GoToEditEmployee, ListEmployeesBackground, Table, TableCell, TableHeader, TableRow } from "../../styles/ListEmployee.styles";
 import { useRedirect } from "../../hooks/useRedirect";
-import { CgPen } from "react-icons/cg";
+import { employeesFake } from "../../database";
+import { BiPen } from "react-icons/bi";
 
-const employees = [
-  {
-    id: 'b8e27d66-8f25-4f47-bb92-d3d8f67a4c9e',
-    name: 'Anderson Santos',
-    email: 'anderson@exemplo.com',
-    role: 'Admin',
-    addedAt: '2024-11-25',
-    updatedAt: '2024-11-26',
-  },
-  {
-    id: 'c0a4c6f0-d8e4-4a12-905c-3a4e3f4f3f8e',
-    name: 'João Silva',
-    email: 'joao@exemplo.com',
-    role: 'Editor',
-    addedAt: '2024-11-20',
-    updatedAt: '2024-11-24',
-  },
-];
+const employees = employeesFake;
 
 export function ListEmployees() {
   const { goToPage } = useRedirect();
@@ -49,7 +33,9 @@ export function ListEmployees() {
             <TableCell>{employee.addedAt}</TableCell>
             <TableCell>{employee.updatedAt}</TableCell>
             <TableCell>
-              <CgPen size={24} onClick={() => goToPage(`/editemployee/${employee.id}`)}/>
+              <GoToEditEmployee>
+                <BiPen size={24} onClick={() => goToPage(`/editemployee/${employee.id}`)}/>
+              </GoToEditEmployee>
             </TableCell>
           </TableRow>
         ))}
