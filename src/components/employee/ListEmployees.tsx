@@ -1,5 +1,6 @@
 import { TiUserAdd } from "react-icons/ti";
 import { GoToCreateEmployee, ListEmployeesBackground, Table, TableCell, TableHeader, TableRow } from "../../styles/ListEmployee.styles";
+import { useRedirect } from "../../hooks/useRedirect";
 
 const employees = [
   {
@@ -165,6 +166,8 @@ const employees = [
 ];
 
 export function ListEmployees() {
+  const { goToPage } = useRedirect();
+
   return (
     <ListEmployeesBackground>
       <Table>
@@ -193,7 +196,7 @@ export function ListEmployees() {
         ))}
         </tbody>
       </Table>
-      <GoToCreateEmployee>
+      <GoToCreateEmployee onClick={() => goToPage('/newemployee')}>
         <TiUserAdd size={30}/>
       </GoToCreateEmployee>
     </ListEmployeesBackground>
