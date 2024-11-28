@@ -1,13 +1,17 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import ListEmployees from './pages/ListEmployees'
-import GlobalStyles from './styles/GlobalStyles'
-import Header from './components/layout/Header'
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ListEmployees from './pages/ListEmployees';
+import GlobalStyles from './styles/GlobalStyles';
+import Header from './components/layout/Header';
+import NewEmployeePage from './pages/NewEmployee';
 
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
+  <Router>
     <GlobalStyles/>
     <Header/>
-    <ListEmployees/>
-  </StrictMode>
+    <Routes>
+      <Route path='/' element={<ListEmployees/>} />
+      <Route path='/newemployee' element={<NewEmployeePage/>} />
+    </Routes>
+  </Router>
 )
