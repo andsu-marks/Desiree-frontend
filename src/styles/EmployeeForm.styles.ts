@@ -25,14 +25,14 @@ export const InputContainer = styled.div`
 export const Input = styled.input`
   background-color: white;
   border: 2px solid gray;
-  height: 25px;
+  height: 20px;
   width: 98%;
   box-shadow: 0 4px 8px var(--shadow-color);
 `;
 
 export const Label = styled.label`
   color: black;
-  height: 25px;
+  height: 20px;
 `;
 
 export const Select = styled.select`
@@ -46,6 +46,7 @@ export const Select = styled.select`
 export const ButtonsContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-top: auto;
 `;
 
 export const SubmitButton = styled.button`
