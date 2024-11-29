@@ -58,7 +58,15 @@ export const GoToCreateEmployee = styled.button`
   z-index: 10;
 `;
 
-export const GoToEditEmployee = styled.button`
+export const ActionButtonsContainer = styled.div`
+  display: flex;
   background-color: inherit;
   border: gray;
+`;
+
+export const ActionButtons = styled.button`
+  background-color: inherit;
+  border: gray;
+  height: 30px;
+  color: black;
 `;

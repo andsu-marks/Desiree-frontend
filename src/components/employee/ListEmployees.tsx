@@ -1,8 +1,8 @@
 import { TiUserAdd } from "react-icons/ti";
-import { GoToCreateEmployee, GoToEditEmployee, ListEmployeesBackground, Table, TableCell, TableHeader, TableRow } from "../../styles/ListEmployee.styles";
+import { ActionButtons, ActionButtonsContainer, GoToCreateEmployee, ListEmployeesBackground, Table, TableCell, TableHeader, TableRow } from "../../styles/ListEmployee.styles";
 import { useRedirect } from "../../hooks/useRedirect";
 import { employeesFake } from "../../database";
-import { BiPen } from "react-icons/bi";
+import { BiPen, BiTrash } from "react-icons/bi";
 
 const employees = employeesFake;
 
@@ -33,9 +33,14 @@ export function ListEmployees() {
             <TableCell>{employee.addedAt}</TableCell>
             <TableCell>{employee.updatedAt}</TableCell>
             <TableCell>
-              <GoToEditEmployee>
-                <BiPen size={24} onClick={() => goToPage(`/editemployee/${employee.id}`)}/>
-              </GoToEditEmployee>
+              <ActionButtonsContainer>
+                <ActionButtons>
+                  <BiPen size={20} onClick={() => goToPage(`/editemployee/${employee.id}`)}/>
+                </ActionButtons>
+                <ActionButtons>
+                  <BiTrash size={19}/>
+                </ActionButtons>
+              </ActionButtonsContainer>
             </TableCell>
           </TableRow>
         ))}
