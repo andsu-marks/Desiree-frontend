@@ -10,7 +10,7 @@ import { formDataProps, Role } from "../../types/EmployeeTypes";
 import { employeesFake } from "../../database";
 
 export function EmployeesForm() {
-  const { goBackPage } = useRedirect();
+  const { goToPage } = useRedirect();
   const { id } = useParams();
 
   const { formData, setFormData } = useFormData<formDataProps>({
@@ -137,7 +137,7 @@ export function EmployeesForm() {
       </InputContainer>
 
       <ButtonsContainer>
-        <SubmitButton type='button' onClick={() => goBackPage()}>Voltar</SubmitButton>
+        <SubmitButton type='button' onClick={() => goToPage('/employees')}>Voltar</SubmitButton>
         <SubmitButton type='submit'>Cadastrar</SubmitButton>
       </ButtonsContainer>
     </EmployeesFormBackground>

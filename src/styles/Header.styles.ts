@@ -23,5 +23,12 @@ export const Nav = styled.nav`
 
 export const List = styled.ul`
   display: flex;
+  align-items: center;
   gap: 10px;
-`
+`;
+
+export const HeaderButton = styled.button`
+  background-color: inherit;
+  height: 35px;
+  border: gray;
+`;

@@ -52,5 +52,6 @@ export const SubmitButton = styled.button`
   border-radius: 5px;
   box-shadow: 0 4px 8px var(--shadow-color);
   width: 30%;
+  align-self: flex-end;
 `;
 

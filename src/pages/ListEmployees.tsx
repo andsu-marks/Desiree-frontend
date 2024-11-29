@@ -1,6 +1,6 @@
 import { ListEmployees } from "../components/employee/ListEmployees";
 
-export default function EmployeePage() {
+export default function EmployeesPage() {
   return (
     <ListEmployees/>
   )

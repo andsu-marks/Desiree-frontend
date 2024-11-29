@@ -7,9 +7,5 @@ export const useRedirect = () => {
     navigate(path);
   }
 
-  const goBackPage = () => {
-    navigate('/');
-  }
-
-  return { goToPage, goBackPage };
+  return { goToPage };
 }
