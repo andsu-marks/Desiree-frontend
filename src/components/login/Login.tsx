@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect } from "react";
 import { useFormData } from "../../hooks/useFormData";
 import { useRedirect } from "../../hooks/useRedirect";
 import { Input, InputContainer, Label, SubmitButton } from "../../styles/EmployeeForm.styles";
@@ -24,10 +23,6 @@ export function Login() {
       [id]: value,
     }));
   };
-
-  useEffect(() => {
-
-  },[])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

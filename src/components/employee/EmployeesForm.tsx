@@ -6,14 +6,16 @@ import { useEffect } from "react";
 import { useRedirect } from "../../hooks/useRedirect";
 import { ButtonsContainer, EmployeesFormBackground, Input, InputContainer, Label, Select, SubmitButton } from "../../styles/EmployeeForm.styles";
 import { useFormData } from "../../hooks/useFormData";
-import { formDataProps, Role } from "../../types/EmployeeTypes";
-import { employeesFake } from "../../database";
+import { EmployeesFormDataProps, Role } from "../../types/EmployeeTypes";
+import { createEmployeeService } from "../../services/createEmployeeService";
+import { fetchEmployeeByIdService } from "../../services/fetchEmployeeByIdService";
+import { updateEmployeeService } from "../../services/updateEmployeeService";
 
 export function EmployeesForm() {
   const { goToPage } = useRedirect();
   const { id } = useParams();
 
-  const { formData, setFormData } = useFormData<formDataProps>({
+  const { formData, setFormData } = useFormData<EmployeesFormDataProps>({
     name: '',
     role: Role.employee,
     email: '',
@@ -23,19 +25,25 @@ export function EmployeesForm() {
   });
 
   useEffect(() => {
-    if(id) {
-      const employee = employeesFake.find((emp) => emp.id);
-      if(employee) {
-        setFormData({
-          name: employee.name,
-          role: employee.role,
-          email: employee.email,
-          confirmEmail: employee.email,
-          password: employee.password,
-          confirmPassword: employee.password,
-        });
+    const fetchEmployee = async () => {
+      if(id) {
+        try {
+          const employee = await fetchEmployeeByIdService(id);
+          setFormData({
+            name: employee.name,
+            role: employee.role,
+            email: employee.email,
+            confirmEmail: employee.email,
+            password: employee.password,
+            confirmPassword: employee.password,
+          });
+        } catch {
+          toast.error("Erro ao buscar os dados do funcionário.");
+        }      
       }
     }
+
+    fetchEmployee();
   }, [id])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -46,7 +54,7 @@ export function EmployeesForm() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (formData.email !== formData.confirmEmail) {
@@ -59,7 +67,22 @@ export function EmployeesForm() {
       return;
     }
 
-    console.log(formData);
+    if (id) {
+      try {
+        await updateEmployeeService(formData, id);
+        toast.success("Funcionário atualizado com sucesso!");
+      } catch {
+        toast.error("Erro ao atualizar o funcionário.");
+      }
+    } else {
+      try {
+        await createEmployeeService(formData);
+        toast.success("Funcionário criado com sucesso!");
+      } catch {
+        toast.error("Erro ao criar o funcionário.");
+      }
+    }
+
   };
 
   return (
